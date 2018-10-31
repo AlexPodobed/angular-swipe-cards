@@ -10,7 +10,7 @@ import {
   OnInit,
   Output, Renderer2,
 } from '@angular/core';
-import {SW_SWIPE_CARD_DEFAULT_OPTIONS, SWSwipeCardConfig} from '../swipe-card.config';
+import {SW_SWIPE_CARD_DEFAULT_OPTIONS, SWSwipeCardConfig} from './swipe-card.config';
 
 @Directive({
   selector: '[swSwipeable]',
@@ -21,6 +21,7 @@ export class SwipeableDirective implements OnInit, OnDestroy {
   private element: HTMLElement;
   private overlay: HTMLElement;
   private releaseRadius: { x: number, y: number };
+  private timeoutId: number;
 
   @HostBinding('style.width.px')
   @Input()
@@ -74,6 +75,7 @@ export class SwipeableDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    window.clearTimeout(this.timeoutId);
   }
 
   ngOnInit(): void {
@@ -163,7 +165,7 @@ export class SwipeableDirective implements OnInit, OnDestroy {
     this.removeOverlay(like);
     this.released = true;
 
-    setTimeout(() => {
+    this.timeoutId = window.setTimeout(() => {
       this.onLike.emit(like);
       this.onRelease.emit();
       this.destroy();

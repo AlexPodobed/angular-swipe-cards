@@ -1,6 +1,5 @@
 import {AfterContentInit, Component, ContentChildren, OnInit, QueryList} from '@angular/core';
-import {SwipeCardComponent} from '../card/swipe-card.component';
-import {SwipeableDirective} from '../card/swipeable.directive';
+import {SwipeableDirective} from '../swipeable.directive';
 
 @Component({
   selector: 'sw-card-wrapper',
