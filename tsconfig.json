@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "swipe-card-lib": [
+        "dist/swipe-card-lib"
+      ],
+      "swipe-card-lib/*": [
+        "dist/swipe-card-lib/*"
+      ]
+    }
   }
 }

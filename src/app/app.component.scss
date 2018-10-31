@@ -1,0 +1,26 @@
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: cornsilk;
+  border: 1px solid mediumvioletred;
+  border-radius: 20px;
+  overflow: hidden;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.btn-block {
+  text-align: center;
+  margin-top: 20px;
+
+  > button {
+    margin: 0 4px;
+  }
+}

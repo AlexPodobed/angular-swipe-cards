@@ -1,0 +1,30 @@
+.swipe-card-heap[swswipeable] {
+  display: block;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+
+  &:nth-child(1) {
+    transform: translate3d(0, 0px, 0px);
+    transition: transform .3s ease;
+    position: relative;
+    z-index: 3;
+    visibility: visible;
+  }
+
+  &:nth-child(2) {
+    transform: translate3d(5px, -5px, 0px);
+    z-index: 2;
+    visibility: visible;
+    opacity: 0.5;
+  }
+
+  .swipe-card-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
