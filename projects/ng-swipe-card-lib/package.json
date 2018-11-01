@@ -1,6 +1,13 @@
 {
   "name": "ng-swipe-card",
   "version": "0.0.1",
+  "description": "This is a tiner-like swipe-able cards library for angular",
+  "keywords": [
+    "Angular",
+    "Tiner-like",
+    "Swipable cards"
+  ],
+  "license" : "SEE LICENSE IN LICENSE",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
