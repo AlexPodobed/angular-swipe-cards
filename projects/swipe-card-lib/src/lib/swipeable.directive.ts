@@ -43,10 +43,6 @@ export class SwipeableDirective implements OnInit, OnDestroy {
   @Output()
   public onLike = new EventEmitter<boolean>();
 
-  get allowSwipe(): boolean {
-    return !this.fixed && !this.released;
-  }
-
   @HostBinding('class.swipe-card-heap')
   public className = true;
 
@@ -66,6 +62,10 @@ export class SwipeableDirective implements OnInit, OnDestroy {
 
       (conditionX || conditionY) ? this.handleSwipeEnd(like) : this.handleCancelSwipe();
     }
+  }
+
+  get allowSwipe(): boolean {
+    return !this.fixed && !this.released;
   }
 
   constructor(@Inject(SW_SWIPE_CARD_DEFAULT_OPTIONS) private _defaultConfig: SWSwipeCardConfig,
@@ -175,5 +175,4 @@ export class SwipeableDirective implements OnInit, OnDestroy {
   public simulateSwipe(like: boolean) {
     this.handleSwipeEnd(like);
   }
-
 }

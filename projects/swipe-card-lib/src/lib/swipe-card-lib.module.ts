@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CardWrapperComponent} from './card-wrapper/card-wrapper.component';
+import {CardWrapperComponent} from './card-wrapper.component';
 import {SwipeableDirective} from './swipeable.directive';
 
 @NgModule({

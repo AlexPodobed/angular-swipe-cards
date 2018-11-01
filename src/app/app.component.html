@@ -3,17 +3,6 @@
 
   <div class="container">
     <sw-card-wrapper #cardWrapper>
-<!--      <sw-swipe-card *ngFor="let card of cards, let index = index"
-                     [width]="400"
-                     [height]="600"
-                     [orientation]="'x'"
-                     (onRelease)="removeBy(index)">
-        <div class="card">
-          {{card}}
-        </div>
-      </sw-swipe-card>-->
-
-
       <div class="card" *ngFor="let card of cards, let index = index"
            swSwipeable
            [width]="400"
@@ -22,7 +11,6 @@
            (onRelease)="removeBy(index)">
         {{card}}
       </div>
-
       <div class="btn-block">
         <button (click)="cardWrapper.dislike()">dislike</button>
         <button (click)="cardWrapper.like()">like</button>
