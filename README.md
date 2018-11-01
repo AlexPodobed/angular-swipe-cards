@@ -1,27 +1,101 @@
-# SwipeCard
+# ng-swipe-card
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.4.
+Tinder-like swipe-able cards
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
+The package can be installed via npm:
 
-## Code scaffolding
+`npm install ng-swipe-card --save`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+You'll need to install and include **hammerjs** to your project to run this lib.
 
-## Build
+`npm install hammerjs --save`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Usage
+Include hammerjs to `angular.json` as build option:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+{
+  "architect": {
+    // ...
+    "build": {
+      "options": {
+        // ...
+        "scripts": ["./node_modules/hammerjs/hammer.min.js"] 
+      }
+    } 
+},
+```
 
-## Running end-to-end tests
+Include styles to your root scss:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+`@import "~ng-swipe-card/style/styles";`
 
-## Further help
+Include **SwipeCardLibModule** to your root module
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```ts
+import {SwipeCardLibModule} from 'ng-swipe-card';
+
+@NgModule({
+  // ...
+  imports: [ SwipeCardLibModule ]
+})
+
+```
+
+Print your cards using `<sw-card-wrapper></sw-card-wrapper>` component and `swSwipeable` directive:
+
+```html
+ <sw-card-wrapper #cardWrapper>
+      <div class="card" *ngFor="let card of cards, let index = index"
+           swSwipeable
+           [width]="400"
+           [height]="600"
+           [orientation]="'x'"
+           (onRelease)="removeBy(index)">
+        {{card}}
+      </div>
+      <div class="btn-block">
+        <button (click)="cardWrapper.dislike()">dislike</button>
+        <button (click)="cardWrapper.like()">like</button>
+      </div>
+ </sw-card-wrapper>
+```
+
+@Inputs:
+
+| Name | Description |
+| --- | --- |
+| `[width]: number` | set card width
+| `[height]: number` | set card height
+| `[fixed]: boolean` | set fixed behaviour (if `true` - prevent swiping)
+| `[orientation]: 'x' or 'y' or 'xy'` | set swiping orientation
+
+
+@Outputs:
+
+| Name | Description |
+| --- | --- |
+| `(released): EventEmitter` | dispatch event when card has been released
+| `(swiped): EventEmitter<boolean>` | dispatch event when card has been swiped (`true` - if user swipe to right, `false` - to left) 
+
+
+## Customize
+
+To customize colors on swipe you can extend default options:
+
+```ts
+import {SW_SWIPE_CARD_DEFAULT_OPTIONS} from 'ng-swipe-card';
+
+@NgModule({
+  // ...
+  providers: [{
+    provide: SW_SWIPE_CARD_DEFAULT_OPTIONS,
+    useValue: {likeColor: '104,159,56', dislikeColor: '193,3,2'}
+  }]
+})
+export class AppModule {
+}
+```

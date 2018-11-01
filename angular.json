@@ -128,9 +128,9 @@
         }
       }
     },
-    "swipe-card-lib": {
-      "root": "projects/swipe-card-lib",
-      "sourceRoot": "projects/swipe-card-lib/src",
+    "ng-swipe-card-lib": {
+      "root": "projects/ng-swipe-card-lib",
+      "sourceRoot": "projects/ng-swipe-card-lib/src",
       "projectType": "library",
       "prefix": "sw",
       "schematics": {
@@ -142,29 +142,29 @@
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/swipe-card-lib/tsconfig.lib.json",
-            "project": "projects/swipe-card-lib/ng-package.json",
+            "tsConfig": "projects/ng-swipe-card-lib/tsconfig.lib.json",
+            "project": "projects/ng-swipe-card-lib/ng-package.json",
           },
           "configurations": {
             "production": {
-              "project": "projects/swipe-card-lib/ng-package.prod.json"
+              "project": "projects/ng-swipe-card-lib/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/swipe-card-lib/src/test.ts",
-            "tsConfig": "projects/swipe-card-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/swipe-card-lib/karma.conf.js"
+            "main": "projects/ng-swipe-card-lib/src/test.ts",
+            "tsConfig": "projects/ng-swipe-card-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-swipe-card-lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/swipe-card-lib/tsconfig.lib.json",
-              "projects/swipe-card-lib/tsconfig.spec.json"
+              "projects/ng-swipe-card-lib/tsconfig.lib.json",
+              "projects/ng-swipe-card-lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

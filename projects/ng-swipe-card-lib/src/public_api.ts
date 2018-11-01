@@ -1,5 +1,5 @@
 /*
- * Public API Surface of swipe-card-lib
+ * Public API Surface of ng-swipe-card-lib
  */
 
 export * from './lib/swipe-card-lib.module';

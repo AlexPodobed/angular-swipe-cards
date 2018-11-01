@@ -17,7 +17,7 @@ import {SW_SWIPE_CARD_DEFAULT_OPTIONS, SWSwipeCardConfig} from './swipe-card.con
 })
 export class SwipeableDirective implements OnInit, OnDestroy {
   private readonly animationDuration = 200;
-  private released: Boolean = false;
+  private isReleased: Boolean = false;
   private element: HTMLElement;
   private overlay: HTMLElement;
   private releaseRadius: { x: number, y: number };
@@ -38,10 +38,10 @@ export class SwipeableDirective implements OnInit, OnDestroy {
   public orientation = 'xy';
 
   @Output()
-  public onRelease = new EventEmitter();
+  public released = new EventEmitter();
 
   @Output()
-  public onLike = new EventEmitter<boolean>();
+  public swiped = new EventEmitter<boolean>();
 
   @HostBinding('class.swipe-card-heap')
   public className = true;
@@ -65,7 +65,7 @@ export class SwipeableDirective implements OnInit, OnDestroy {
   }
 
   get allowSwipe(): boolean {
-    return !this.fixed && !this.released;
+    return !this.fixed && !this.isReleased;
   }
 
   constructor(@Inject(SW_SWIPE_CARD_DEFAULT_OPTIONS) private _defaultConfig: SWSwipeCardConfig,
@@ -163,11 +163,11 @@ export class SwipeableDirective implements OnInit, OnDestroy {
 
   private handleSwipeEnd(like: boolean): void {
     this.removeOverlay(like);
-    this.released = true;
+    this.isReleased = true;
 
     this.timeoutId = window.setTimeout(() => {
-      this.onLike.emit(like);
-      this.onRelease.emit();
+      this.swiped.emit(like);
+      this.released.emit();
       this.destroy();
     }, this.animationDuration);
   }

@@ -2,8 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {SwipeCardLibModule} from '../../projects/swipe-card-lib/src/lib/swipe-card-lib.module';
-import {SW_SWIPE_CARD_DEFAULT_OPTIONS} from '../../projects/swipe-card-lib/src/lib/swipe-card.config';
+import {SwipeCardLibModule} from '../../projects/ng-swipe-card-lib/src/lib/swipe-card-lib.module';
+import {SW_SWIPE_CARD_DEFAULT_OPTIONS} from '../../projects/ng-swipe-card-lib/src/lib/swipe-card.config';
 
 @NgModule({
   declarations: [
